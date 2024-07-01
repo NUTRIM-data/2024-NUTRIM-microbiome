@@ -17,50 +17,88 @@ toc: true
 toc-location: right
 toc-depth: 4
 toc-expand: 1
+other-links:
+  - text: "Course overview"
+    href: "https://david-barnett.github.io/2024-NUTRIM-microbiome"
+    icon: "house"
+    target: "_blank"
+  - text: "posit.cloud workspace"
+    href: "https://posit.cloud/spaces/526847"
+    icon: "cloud"
+    target: "_blank"
 number-sections: true
 number-depth: 3
-fig-dpi: 300
+fig-dpi: 200
 fig-width: 7.5
 fig-height: 5
 fig-responsive: true
 code-tools: true
 code-fold: false
-code-link: false
+code-link: true
 lightbox: auto
+link-external-icon: true
 cache: true
 ---
 
-## Learning goals 💪
+## Introduction 👋
 
--   [Using Quarto](#using-quarto)
--   [Reading tabular data](#reading-data)
--   [Inspecting data](#inspecting-data)
--   [Joining dataframes](#joining-dataframes)
--   [Mutating dataframes](#mutating-data)
+### Learning goals 🧠
 
-## Using Quarto 📝 {#using-quarto}
+-   Using Quarto
+-   Reading tabular data
+-   Inspecting data
+-   Joining data frames
+-   Mutating data frames
 
-During this workshop, we will write code and notes in [Quarto documents](https://r4ds.hadley.nz/quarto){target="_blank"}.
+### Getting started 🚀
 
-Write notes in "[markdown](https://quarto.org/docs/authoring/markdown-basics.html "Markdown is plain text, with special characters to indicate headings, bold text, links etc"){target="_blank"}", e.g. your intentions, hypotheses, observations, etc.
+In this workshop we will use an online version of [RStudio](https://posit.co/download/rstudio-desktop/ "RStudio is an application where you write and run R code"){target="_blank"} - via [posit.cloud](https://posit.cloud/spaces/526847 "Posit Cloud provides a cloud server to run and share RStudio projects"){target="_blank"}
 
-```{r}
-# write code in "chunks" (and comments too, using the # symbol)
-print("Hello World")
-```
+1.  [Sign up for a free posit.cloud account](https://posit.cloud/spaces/526847){target="_blank"}\
+    (use a GitHub or Google account if you already have one of these)
 
-Insert a chunk with ctrl/cmd + shift + I
+2.  Check your email for a link to join the posit.cloud space for this course
+
+3.  Click on the **2024-NUTRIM-microbiome** project - this will start RStudio
+
+4.  Go to **Files** (look bottom right) \> click folder `practical-1` \> open file `practical-1A-notebook.qmd`
+
+### Using Quarto 📝
+
+We will write code and notes in [Quarto](https://r4ds.hadley.nz/quarto){target="_blank"} `.qmd` documents, e.g. `practical-1A-notebook.qmd`
+
+#### **Write some notes:**
+
+You can write normal text for notes, e.g. your intentions, hypotheses, observations, etc.
+
+To edit your Quarto notebooks in RStudio you can use "[Visual](https://quarto.org/docs/visual-editor/){target="_blank"}" editor mode, or the "Source" mode.
+
+*Toggle between modes at the top left. Visual editor is easier for beginners, but Source mode shows how the Quarto file truly looks (it only contains [markdown](https://quarto.org/docs/authoring/markdown-basics.html "Markdown is plain text, with special characters to indicate headings, bold text, links etc"){target="_blank"} text, but RStudio adds formatting in Visual mode).*
+
+#### **Write and run code:**
+
+You can write code and comments in "chunks" - like the one below.
+
+Run a chunk by clicking the green play button in the corner of the chunk
 
 ```{r, eval=FALSE}
-print("Run this one line with ctrl + enter, or cmd + enter on macOS")
-print("or run a whole chunk with ctrl/cmd + SHIFT + enter")
+# This is a comment, because it starts with the # symbol
+print("This line is code, try to run it!") 
 ```
 
-Run all previous chunks by clicking the first button in the corner of the chunk
+Insert a code chunk with `Ctrl`+`Alt`+`I` (Windows) or `Cmd`+`Option`+`I` (Mac).
+
+```{r, eval=FALSE}
+# You can also run code with keyboard shortcuts!
+print("Run this one line with Ctrl + Enter, or Cmd + Enter on Mac")
+print("or run a whole chunk with Ctrl/Cmd + SHIFT + Enter")
+```
+
+You can run all previous chunks by clicking the other button in the corner of the chunk.
 
 ## Load R packages 📦
 
-It is good practice to load all the packages you need at the top of your notebook.
+It is a good idea to load all the packages you need at the top of your notebook.
 
 ```{r}
 # `readxl` is for reading data from Excel files
@@ -68,8 +106,8 @@ library(readxl)
 ```
 
 ```{r}
-# `writexl` is for writing data to a new Excel file, we'll use this at the end.
-library(writexl)
+# `writexl` is for writing data to a new Excel file
+library(writexl) # we'll use this at the end
 ```
 
 ```{r}
@@ -78,8 +116,8 @@ library(here)
 ```
 
 ```{r}
-# `tidyverse` is a collection of several packages (dplyr, ggplot2, and others)
-library(tidyverse)
+# `tidyverse` is a collection of several packages 
+library(tidyverse) # (dplyr, ggplot2, and others)
 ```
 
 ## Reading data 📂 {#reading-data}
@@ -93,9 +131,9 @@ meds <- read_excel(here("data/papa2012/papa2012_metadata.xlsx"), sheet = "treatm
 ```
 
 ::: {#tip-paths .callout-tip collapse="false"}
-## Projects and portable filepaths
+## Projects and portable file paths
 
-There are multiple ways to tell R where to find the data files for this project.
+There are multiple ways to tell R where to find the data files for a project.
 
 ::: panel-tabset
 #### Projects + relative paths
@@ -157,7 +195,7 @@ meta <- read_excel(path = "data/papa2012/papa2012_metadata.xlsx", na = "NA")
 
 ### Look at the tables 👀
 
-Look at the metadata.
+Start by printing the metadata data frame, like this:
 
 ```{r}
 meta
@@ -169,11 +207,11 @@ meta
 ::: panel-tabset
 ##### dataframes & tibbles
 
--   A dataframe is the standard class of object for holding rectangular data (tables) in your R environment.
+A dataframe is the standard class of object for holding rectangular data (tables) in your R environment.
 
--   Columns of a dataframe can hold vectors of different classes, e.g. chr and int (characters and integers)
+Columns of a dataframe can hold vectors of different classes, e.g. chr and int (characters and integers)
 
--   (In contrast, a matrix can only hold one type of data!)
+(In contrast, a matrix can only hold one type of data!)
 
 ```{r}
 example_df <- data.frame(alphabet = LETTERS, numbers = 1:26)
@@ -239,14 +277,6 @@ meta %>% summarise(age_mean = mean(age_years), age_sd = sd(age_years), .by = dia
 R's base graphics can be used to quickly summarise data distributions.
 
 ::: panel-tabset
-#### Bar chart
-
-```{r}
-#| fig-width: 6
-#| fig-height: 3
-meta$activity %>% table() %>% barplot(xlab = "Disease Activity")
-```
-
 #### Histogram
 
 ```{r}
@@ -254,21 +284,19 @@ meta$activity %>% table() %>% barplot(xlab = "Disease Activity")
 #| fig-height: 3
 meta$age_years %>% hist(breaks = 10, main = NULL, xlab = "Age")
 ```
+
+#### Bar chart
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+meta$activity %>% table() %>% barplot(xlab = "Disease Activity")
+```
 :::
 
 ggplot2 is a popular and powerful plotting package.
 
 ::: panel-tabset
-#### Bar chart
-
-```{r}
-#| fig-width: 8
-#| fig-height: 3
-ggplot(meta) +
-  geom_bar(aes(y = diagnosis, fill = active)) +
-  theme_bw()
-```
-
 #### Histogram
 
 ```{r}
@@ -278,6 +306,67 @@ ggplot(meta) +
   geom_histogram(aes(age_years), binwidth = 1) +
   facet_wrap(~case_control, ncol = 1) +
   theme_minimal()
+```
+
+#### Bar chart
+
+```{r}
+#| fig-width: 8
+#| fig-height: 3
+ggplot(meta) +
+  geom_bar(aes(y = activity, fill = diagnosis)) +
+  theme_bw()
+```
+:::
+
+::: {#tip-ggsave .callout-tip collapse="true"}
+### `ggsave` to save your plots? 🦸📊💾
+
+-   Viewing your plots in RStudio is okay for practice
+-   But don't copy paste them to save them, as there is a much better way!
+
+```{r}
+# Assign your plot to an R object
+plot_practice_bars <- ggplot(meta) +
+  geom_bar(aes(y = activity, fill = diagnosis)) +
+  ggtitle("Practice bar chart") +
+  theme_bw()
+
+# create a folder for figures
+dir.create(here("practical-1/figs"))
+
+# Write the plot to a file, with ggsave
+ggsave(
+  plot = plot_practice_bars, 
+  filename = here("practical-1/figs/practice-barchart.png"),
+  width = 6, height = 3, units = "in", dpi = 300
+)
+```
+
+```{r, include=FALSE}
+unlink(here("practical-1/figs"), recursive = TRUE)
+```
+
+**Be sure to carefully adjust the sizing and resolution of your plots for your paper or presentation!**
+:::
+
+::: {#tip-fig-quarto .callout-tip collapse="true"}
+### Sizing plots in Quarto reports 📏📊📄
+
+-   Again, viewing your plots in the RStudio is only okay for practice.
+-   If you're using Quarto reports, you can specify figure size and resolution in each chunk
+
+e.g.
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3
+#| echo: fenced
+
+ggplot(meta) +
+  geom_bar(aes(y = activity, fill = diagnosis)) +
+  ggtitle("Practice bar chart") +
+  theme_bw()
 ```
 :::
 
@@ -565,18 +654,25 @@ all_meta <- all_meta %>% mutate(
   active = factor(active, c("control", "inactive", "active")),
   activity = factor(activity, c("control", "inactive", "mild", "moderate", "severe"))
 )
-
-# you do the same for immunosuppression_level! don't forget to check the result
 ```
 
+Now you do the same for `immunosuppression_level`! Don't forget to check the result
+
+::: {.callout-tip collapse="true"}
+#### Click for solution
+
 ```{r}
-#| include: false
 all_meta <- all_meta %>% mutate(
   immunosuppression_level = factor(x = immunosuppression_level, c(
     "none", "level0", "level1", "level2", "level3", "level4"
   ))
 )
 ```
+
+```{r}
+all_meta %>% select(diagnosis, activity, immunosuppression_level)
+```
+:::
 
 ## Save your progress 💾
 
@@ -605,6 +701,15 @@ RDS files are R's native format for saving single R objects. They preserve data 
 
 ```{r}
 saveRDS(all_meta, here(output_path, "all_metadata.rds"))
+```
+
+```{r}
+#| include: false
+# these files can be used if participants fail to replicate processing
+dir.create(here(output_path, "backup"))
+write_csv(all_meta, here(output_path, "backup", "all_metadata.csv"))
+write_xlsx(all_meta, here(output_path, "backup", "all_metadata.xlsx"))
+saveRDS(all_meta, file = here(output_path, "backup", "all_metadata.rds"))
 ```
 
 ## Next! ⏩

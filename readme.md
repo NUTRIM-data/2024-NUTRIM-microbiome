@@ -1,28 +1,33 @@
-## General links
+## Important links
 
-[Timetable on Google sheets](https://docs.google.com/spreadsheets/d/1mt0nUgz8h7Lax0L2wGjKzeZomPlQbVFaPmd1gahLUqA/edit?usp=sharing)
+-   This readme: [david-barnett.github.io/2024-NUTRIM-microbiome](https://david-barnett.github.io/2024-NUTRIM-microbiome)
 
-posit.cloud free account signup - <https://posit.cloud/plans/free>
+-   Course timetable on [Google sheets](https://docs.google.com/spreadsheets/d/1mt0nUgz8h7Lax0L2wGjKzeZomPlQbVFaPmd1gahLUqA/edit?usp=sharing)
 
-This readme as webpage - <https://david-barnett.github.io/2024-NUTRIM-microbiome/readme.html>
+-   posit.cloud free account signup: [posit.cloud/plans/free](https://posit.cloud/plans/free)
+
+    -   Check your email for the link to join the posit.cloud space for this course
 
 ## Practical Instructions
 
-#### Practical 1
+Start with practical 1 - part A - click the link and follow the instructions.
 
--   Part A\
-    [https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1A-instructions.html](https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1B-instructions.html)
+### Practical 1
 
--   Part B\
-    <https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1B-instructions.html>
+-   **Part A:** [david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1A-instructions.html](https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1A-instructions.html)
 
-#### Practical 2
+-   **Part B:** [david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1B-instructions.html](https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1B-instructions.html)
 
--   Work in progress\
-    [https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-2/web/practical2-instructions.html](https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-1/web/practical1B-instructions.html)
+### Practical 2
 
--   
+-   **Instructions:** [david-barnett.github.io/2024-NUTRIM-microbiome/practical-2/web/practical2-instructions.html](https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-2/web/practical2-instructions.html)
 
-#### Practical 3
+### Practical 3
 
--   Work in progress
+-   **Instructions:** [david-barnett.github.io/2024-NUTRIM-microbiome/practical-3/web/practical3-instructions.html](https://david-barnett.github.io/2024-NUTRIM-microbiome/practical-3/web/practical3-instructions.html)
+
+## Other links
+
+-   microViz package website: [https://david-barnett.github.io/microViz/](https://david-barnett.github.io/microViz/)
+
+-   GitHub repo for source material: [github.com/david-barnett/2024-NUTRIM-microbiome](https://github.com/david-barnett/2024-NUTRIM-microbiome)

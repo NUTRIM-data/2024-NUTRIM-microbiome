@@ -12,3 +12,12 @@ h3 {
 #toc-title {
   border-top: none;
 }
+
+.quarto-other-links h2 {
+    border-top: none;
+}
+
+.tab-content {
+  border-color: #D2D2D2;
+  border-width: 1px;
+}
